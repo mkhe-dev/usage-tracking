@@ -1,0 +1,32 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.16.0/.schema/devbox.schema.json",
+  "packages": [
+    "python313@latest",
+    "poetry@latest",
+    "nodejs_22@latest"
+  ],
+  "env_from": "./.env",
+  "env": {
+        // Install your virtual environment in `.venv`
+        "VENV_DIR": "./backend/.venv"
+    },
+  "shell": {
+    "init_hook": [
+      ". $VENV_DIR/bin/activate"
+    ],
+    "scripts": {
+      "install_backend": [
+        "cd backend && poetry install --no-root"
+      ],
+      "install_frontend": [
+        "cd frontend && npm ci"
+      ],
+      "run_backend": [
+        "cd backend && poetry run python app.py"
+      ],
+      "run_frontend": [
+        "cd frontend && npm run dev"
+      ]
+    }
+  }
+}
