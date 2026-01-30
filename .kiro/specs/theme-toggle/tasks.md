@@ -14,7 +14,7 @@
   - **Property 3: Theme persistence round-trip**
   - **Validates: Requirements 1.3, 3.2, 3.3**
 
-- [ ] 2. Create theme toggle component
+- [x] 2. Create theme toggle component
   - Create `src/components/ThemeToggle.vue` with sun/moon icon toggle button
   - Implement hover effects and accessibility features
   - Integrate with theme composable for state management
