@@ -28,7 +28,7 @@
   - **Property 4: Toggle visual feedback**
   - **Validates: Requirements 2.2**
 
-- [ ] 3. Update App.vue with CSS custom properties
+- [x] 3. Update App.vue with CSS custom properties
   - Replace hardcoded colors with CSS custom properties in App.vue
   - Implement theme-aware CSS custom property definitions
   - Add smooth transition effects for theme changes
@@ -42,7 +42,7 @@
   - **Property 2: Visual element theme consistency**
   - **Validates: Requirements 1.2, 1.4, 1.5**
 
-- [ ] 4. Update Leaderboard component with theme support
+- [x] 4. Update Leaderboard component with theme support
   - Replace hardcoded colors with CSS custom properties in Leaderboard.vue
   - Ensure all visual elements respond to theme changes
   - Maintain existing visual hierarchy and branding
@@ -58,7 +58,7 @@
   - Test that theme toggle is positioned correctly in header controls
   - _Requirements: 2.3_
 
-- [ ] 6. Initialize theme system in main application
+- [-] 6. Initialize theme system in main application
   - Import and initialize theme composable in App.vue
   - Ensure theme is applied before component mounting
   - Handle edge cases for browser compatibility

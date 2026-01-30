@@ -15,6 +15,7 @@
         <button class="refresh-btn" @click="refresh" :disabled="loading">
           {{ loading ? 'Refreshing...' : 'Refresh' }}
         </button>
+        <ThemeToggle />
         <span v-if="error" class="error">{{ error }}</span>
       </div>
     </div>
@@ -42,6 +43,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { fetchLeaderboard, filterTeamsByName } from '../helpers/helpers'
+import ThemeToggle from './ThemeToggle.vue'
 
 // 1. Reactive state
 const teams = ref([])      // List of teams
@@ -88,38 +90,40 @@ onMounted(refresh)
   display: flex;
   gap: 12px;
   align-items: center;
+  flex-wrap: wrap;
 }
 .search-input {
   padding: 5px 10px;
   border-radius: 6px;
-  border: 1px solid #b0b3c6;
+  border: 1px solid var(--color-border);
   font-size: 0.75rem;
   width: 200px;
-  background: #23253a;
-  color: #f3f3f3;
+  background: var(--color-secondary-bg);
+  color: var(--color-text-primary);
   outline: none;
-  transition: border 0.2s;
+  transition: border 0.2s, background-color 0.3s ease, color 0.3s ease;
   margin-right: 4px;
 }
 .search-input:focus {
-  border: 1.5px solid #ff9020;
+  border: 1.5px solid var(--color-accent);
 }
 .refresh-btn {
   padding: 8px 14px;
   border-radius: 8px;
   border: none;
   cursor: pointer;
-  background: #ff9020;
-  color: #23253a;
+  background: var(--color-accent);
+  color: var(--color-secondary-bg);
   font-weight: 600;
   box-shadow: 0 1px 6px rgba(255,144,32,0.25);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 .refresh-btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
 .error {
-  color: #ff7a7a;
+  color: var(--color-error);
   font-size: 0.9rem;
 }
 
@@ -136,30 +140,33 @@ onMounted(refresh)
   text-overflow: ellipsis;
   padding: 12px 8px;
   font-size: 1.3rem;
-  color: #f3f3f3;
-  text-shadow: 0 1px 2px #181a28;
+  color: var(--color-text-primary);
+  text-shadow: 0 1px 2px var(--color-text-shadow);
+  transition: color 0.3s ease;
 }
 .token-count {
   text-align: right;
   font-variant-numeric: tabular-nums;
   font-weight: 600;
-  color: #f3f3f3;
-  text-shadow: 0 1px 2px #181a28;
+  color: var(--color-text-primary);
+  text-shadow: 0 1px 2px var(--color-text-shadow);
+  transition: color 0.3s ease;
 }
 .bar-cell {
   padding: 8px 0;
 }
 .bar-bg {
-  background: rgba(99, 193, 198, 0.13);
+  background: var(--color-bar-bg);
   height: 0.7em;
   width: 100%;
   border-radius: 4px;
   margin: 0 15px;
   position: relative;
-  box-shadow: 0 1px 4px 0 rgba(0,0,0,0.18);
+  box-shadow: 0 1px 4px 0 var(--color-shadow-light);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 .bar-fg {
-  background: linear-gradient(90deg, #FF9020 60%, #ffb347 100%);
+  background: linear-gradient(90deg, var(--color-accent) 60%, #ffb347 100%);
   height: 100%;
   border-radius: 4px;
   transition: width 0.7s cubic-bezier(.4,2,.6,1);
@@ -167,13 +174,15 @@ onMounted(refresh)
 }
 h1 {
   font-size: 2.2rem;
-  color: #fff;
+  color: var(--color-text-primary);
   letter-spacing: 0.01em;
+  transition: color 0.3s ease;
 }
 .subtitle {
-  color: #b0b3c6;
+  color: var(--color-text-secondary);
   font-size: 1rem;
   margin-bottom: 1.5em;
+  transition: color 0.3s ease;
 }
 .headline {
   display: flex;
@@ -188,5 +197,18 @@ h1 {
   }
   .container { padding: 12px 2vw; }
   h1 { font-size: 1.3rem; }
+  .controls {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .search-input {
+    width: 150px;
+    font-size: 0.7rem;
+  }
+  .headline {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
 }
 </style>
